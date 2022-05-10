@@ -68,16 +68,6 @@ def load(_sudoku, filename):
     return _sudoku
 
 
-def restore(_sudoku):
-    restored = init()
-    for r in range(9):
-        for c in COLUMNS:
-            solved = isinstance(_sudoku[c][r], int)
-            if solved:
-                restored = lock(restored, c, r, _sudoku[c][r])
-    return restored
-
-
 def completed(_sudoku):
     for r in range(9):
         for c in COLUMNS:
@@ -125,17 +115,10 @@ def backtrack(_sudoku):
         tmp = copy.deepcopy(_sudoku)
         tmp = lock(tmp, c, r, v)
 
-        if completed(tmp):
-            print(draw(tmp))
-            print("Completed!")
-            exit(0)
-
         if impossible(tmp):
-            print("Working...")
             return False
 
-        backtrack(tmp)
-
+        solve(tmp)
 
 def solve(_sudoku):
     # Solve cells with only one solution
@@ -150,7 +133,7 @@ def solve(_sudoku):
 
     if completed(_sudoku):
         print(draw(_sudoku))
-        exit(0)
+        return _sudoku
 
     # Once here we need to use backtracking
     backtrack(_sudoku)
@@ -167,4 +150,4 @@ def solve(_sudoku):
 
 sudoku = init()
 sudoku = load(sudoku, "imposible.txt")
-sudoku = solve(sudoku)
+solve(sudoku)
