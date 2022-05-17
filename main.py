@@ -1,4 +1,5 @@
 import copy
+import time
 
 COLUMNS = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I']
 
@@ -120,6 +121,7 @@ def backtrack(_sudoku):
 
         solve(tmp)
 
+
 def solve(_sudoku):
     # Solve cells with only one solution
     for r in range(9):
@@ -148,6 +150,10 @@ def solve(_sudoku):
 # superveryhard: SD6GAUMK
 # Imposible: SD9FDOPM
 
+
+t = time.time_ns()
 sudoku = init()
-sudoku = load(sudoku, "imposible.txt")
+sudoku = load(sudoku, "hard.txt")
 solve(sudoku)
+
+print(f"Solved in {time.time_ns() - t} ns")
