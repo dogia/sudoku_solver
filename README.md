@@ -1,4 +1,4 @@
-# Sudoku Solver [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
+# Sudoku Solver [![Awesome](https://awesome.re/badge.svg)]
 
 Sudoku solver is a opensource project based in backtraking, it makes the solver very fast because it verify the consistency of a brench before exploring it.
 
